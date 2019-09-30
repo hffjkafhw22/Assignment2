@@ -1,0 +1,19 @@
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <body ng-app="myApp">
+      <div class="header">
+          <div class="logo">ChatRoom</div>
+          <div class="nav">
+              <a href="/">Home</a>
+              <a href="/login">Login</a>
+              <a href="/register">Register</a>
+              <li><a (click)="logout($event)" href="#">Logout</a> </li>
+
+          </div>
+
+
+      </div>
+
+  </body>
+  
+      
+      <router-outlet></router-outlet>

@@ -1,0 +1,40 @@
+
+.header .logo{
+    text-align: center;
+    color:whitesmoke;
+    text-align: center;
+    padding:20px;
+    font-size: 50px;
+    background-color: black;
+    color:whitesmoke;
+
+}
+
+.header .nav{
+    overflow:auto;
+    background-color: royalblue;
+    
+
+}
+
+.header .nav a {
+    line-height: 50px;
+    font-size-adjust: 17px;
+    color: #fff;
+    background-color: royalblue;
+    float: left;
+    padding:5px;
+    text-decoration: none; 
+}
+
+.header .nav a:hover {
+   
+    background-color: orange;
+   
+}
+
+
+
+ body{
+    margin:0;
+ }

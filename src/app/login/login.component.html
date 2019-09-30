@@ -1,0 +1,20 @@
+<router-outlet></router-outlet>
+<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+<div class="login-page">
+    <div class="form">
+      <form class="register-form">
+        <input type="email" name="email" id="email" placeholder="Email" required="required" [(ngModel)]= "email">
+        <input type="password" name="password" id="password" placeholder="Password" required="required" [(ngModel)]= "password">
+        <button>create</button>
+        
+      </form>
+      
+      <form class="login-form">
+          <input type="email" name="emailusername" id="emailusername" placeholder="emailusername" required="required" [(ngModel)]= "emailusername">
+          <input type="password" name="emailpassword" id="emailpassword" placeholder="emailpassword" required="emailpassword" [(ngModel)]= "emailpassword">
+          <button (click)="itemClicked()">login</button>
+        <p class="message">Not registered? <a href="#">Create an account</a></p>
+      </form>
+    </div>
+    
+  </div>

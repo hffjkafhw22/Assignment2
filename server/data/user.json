@@ -1,0 +1,39 @@
+[
+    {
+      "id" : 1,
+      "age": 23,
+      "name": "Brd Raey",
+      "gender": "male",
+      "company": "NION",
+      "email": "123@com"
+    },
+    {
+        "id" : 2,
+      "age": 31,
+      "name": "Liln Burss",
+      "gender": "female",
+      "company": "LUXIA",
+      "email": "1234@com"    },
+    {
+        "id" : 3,
+      "age": 34,
+      "name": "Krise Cole",
+      "gender": "female",
+      "company": "QUEEBO",
+      "email": "1235@com"    },
+    {
+        "id" : 4,
+      "age": 30,
+      "name": "Ler Cross",
+      "gender": "female",
+      "company": "GRNK",
+      "email": "1236@com"    },
+
+    {
+        "id" : 5,
+      "age": 28,
+      "name": "Ma Mall",
+      "gender": "male",
+      "company": "GRNK",
+      "email": "1237@com"    }
+  ]
