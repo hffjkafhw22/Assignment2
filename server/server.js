@@ -1,22 +1,34 @@
-const express = require('express');  // Import exprerss.js
+const express = require('express');// Import exprerss.js
 const app = express(); //The app object conventionally denotes the Express application. Create it by 
-                    //calling the top-level express() function exported by the Express module.
+//const cors = require('cors');
+//const http = require('http').Server(app);
+const server = require('http').createServer(app);     
 
-const path = require('path');
-const http = require('http').Server(app);
-const bodyParser = require('body-parser'); //create an instance of body-parser
+const io = require('socket.io').listen(server);
 
-app.use (bodyParser.json()); //Mounts the specified middleware function at the 
-                            //specified path: the middleware function is executed when the base of the 
-                            //requested path matches path. In this case we are using middleware to parse 
-                            //JSON data
+//const sockets = require('./socket.js');
+               //calling the top-level express() function exported by the Express module.
 
+users = [];
+connections = [];
 
-app.use(express.static(path.join(__dirname, '../dist/week5tut/'))); //Serve static content for the app from the “public” 
-                                                                    //Target the build version of the angular app 
-                                                                    //created in the "dist" direcotry:
+server.listen(process.env.PORT || 3000);
 
-//Route for checking user credentials
-require('./routes/api-login.js')(app,path);
-//Start the server listening on port 3000. Output message to console once server has started.(diagnostic only)
-require('./listen.js')(http);
+console.log('server running on port 3000.');
+
+app.get('/', function(req, res){
+    res.sendFile(__dirname + '/index1.html');
+});
+
+io.sockets.on('connection', function(socket){
+    connections.push(socket);
+    console.log('User Connected: %s online', connections.length);
+
+    socket.on('disconnect', function(data){
+        connections.splice(connections.indexOf(socket), 1);
+        console.log('User disconneted: %s online', connections.length);
+    });
+    socket.on('send message', function(data){
+        io.sockets.emit('new message', {msg:data});
+    });
+});

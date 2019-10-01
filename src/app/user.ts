@@ -2,10 +2,10 @@ export class User {
    
 
     username : string;
-    password : string;
     birthdate:string;
     age:number;
     email:string;
+    password : string;
     valid:boolean;
     constructor(username:string='',birthdate:string='',age:number=0,email:string='',password:string='',valid=false){
        
