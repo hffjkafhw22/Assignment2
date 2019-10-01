@@ -44,7 +44,11 @@ import { ChattingComponent } from './chatting/chatting.component';
         {
           path: 'register',
           component: RegisterComponent
-        }    
+        },
+        {
+          path: 'chatting',
+          component: ChattingComponent
+        }  
       ]
     )
   ],
