@@ -46,9 +46,17 @@ io.sockets.on('connection', function(socket){
             users.push(socket.username);
             updateUsers();
         }
+        
     });
 
     function updateUsers(){
         io.sockets.emit('get users', users);
     }
+
+
+    socket.on('user image', function (data) {
+        console.log(data);
+        socket.broadcast.emit('user image', {user:socket.username, msg:data});  //server receives the images
+      });
+      
 });

@@ -44,7 +44,9 @@
         <div class="form-group">
         <textarea class="form-control" id="message" placeholder="Enter Message"></textarea>
           <input type="submit" class="btn btn-primary" value="ENTER" />          
+          <div class="filebutton">Send Image<input type="file" id="imagefile" class="btn btn-primary"  accept="image/*"></div>
         </div>
+        
       </form> 
       </div>
       </div>
@@ -63,6 +65,7 @@
            const $messageForm = $('#messageForm');
            const $message = $('#message');
            const $chat = $('#chat');
+           const $image = $('#image');
 
            $userForm.submit(function(e){
              e.preventDefault();
@@ -79,12 +82,22 @@
              $username.val('');
            });
 
+   
+           socket.on('user image', image);
+
+
+
            $messageForm.submit(function(e){
              e.preventDefault();
              socket.emit('send message', $message.val());
              $message.val('');
            });
 
+           $messageForm.submit(function(e){
+              e.preventDefault();
+             socket.emit('send message', $message.val());
+             $message.val('');
+           })
            socket.on('new message', function(data){
              $chat.append('<div><strong>' + data.user + '</strong>:' + data.msg +'</div>');
            });
@@ -97,9 +110,23 @@
 
              $users.html(html);
            });
+           function image (from, base64Image) {
+    $('#lines').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+  }
 
+
+           $('#imagefile').bind('change', function(e){
+      var data = e.originalEvent.target.files[0];
+      var reader = new FileReader();
+      reader.onload = function(evt){
+        image('me', evt.target.result);
+        socket.emit('user image', evt.target.result);
+      };
+      reader.readAsDataURL(data);
 
           });
+
+        });
               
     </script>
     
