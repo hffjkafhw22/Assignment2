@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
  
     }
     if ( valid === false){
-      alert("something wrong");
+      alert("please login your account");
     }
   }
 
