@@ -9,7 +9,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 ## Describe the organisation of your Git repository and how you used it during the development of your solution
 In my organisation of Git repository, which has the following structures: e2e is to test, server is to provider the server service and routes for the website running. Src is the main parts of the website and app contains the account, login, register, services and app modules. app-routing modules, app.js into the folder.
 
-In my development stage, the Git repository is not only to be the repository to store the codes and it also records the project development stage in this time.
+In my development stage, the Git repository is not only to be the repository to store the codes and it also records the project development stage in this time. When I developed new feature into the project or develop the feature in the series of process, I would use the Git repository to record my development history and commit.
 
 
 
