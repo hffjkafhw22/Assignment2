@@ -10,8 +10,6 @@ import { RegisterComponent } from './register/register.component';
 import { CommonModule } from '@angular/common'; 
 import { Routes, RouterModule } from '@angular/router';
 import { ChattingComponent } from './chatting/chatting.component';
-import { AddAccountComponent } from './add-account/add-account.component';
-import { AccountlistComponent } from './accountlist/accountlist.component';
 import { AddaccountComponent } from './addaccount/addaccount.component';
 
 
@@ -22,8 +20,6 @@ import { AddaccountComponent } from './addaccount/addaccount.component';
     AccountComponent,
     RegisterComponent,
     ChattingComponent,
-    AddAccountComponent,
-    AccountlistComponent,
     AddaccountComponent
     
   ],
@@ -54,15 +50,12 @@ import { AddaccountComponent } from './addaccount/addaccount.component';
         {
           path: 'chatting',
           component: ChattingComponent
-        }  ,
+        } ,
 
+        
         {
-          path: 'accountlist',
-          component: AddAccountComponent
-        },
-        {
-          path: 'add-account',
-          component:  AccountlistComponent
+          path: 'addaccount',
+          component:  AddaccountComponent
 
         } 
       ]
