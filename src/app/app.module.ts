@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { CommonModule } from '@angular/common'; 
 import { Routes, RouterModule } from '@angular/router';
 import { ChattingComponent } from './chatting/chatting.component';
+import { AddAccountComponent } from './add-account/add-account.component';
+import { AccountlistComponent } from './accountlist/accountlist.component';
 
 
 @NgModule({
@@ -18,7 +20,9 @@ import { ChattingComponent } from './chatting/chatting.component';
     LoginComponent,
     AccountComponent,
     RegisterComponent,
-    ChattingComponent
+    ChattingComponent,
+    AddAccountComponent,
+    AccountlistComponent
     
   ],
   imports: [
@@ -48,7 +52,12 @@ import { ChattingComponent } from './chatting/chatting.component';
         {
           path: 'chatting',
           component: ChattingComponent
-        }  
+        }  ,
+
+        {
+          path: 'add-account',
+          component: AddAccountComponent
+        } 
       ]
     )
   ],
