@@ -5,13 +5,10 @@ const app = express(); //The app object conventionally denotes the Express appli
 const server = require('http').createServer(app);     
 const http = require('http').Server(app);
 const bodyParser = require('body-parser'); //create an instance of body-parser
-const cors = require('cors'); //allow Cross site origin requests
 const MongoClient = require('mongodb').MongoClient;  // require MongoClient functionality
 var  ObjectID = require('mongodb').ObjectID; //require ObjectID functionality
 const io = require('socket.io').listen(server);
-const sockets = require('./socket.js');
-//const sockets = require('./socket.js');
-               //calling the top-level express() function exported by the Express module.
+
 
 users = [];
 connections = []; //save users and connections
@@ -65,7 +62,7 @@ io.sockets.on('connection', function(socket){
       
 });
 
-app.use(cors());
+
 app.use (bodyParser.json()); //Mounts the specified middleware function
 const url = 'mongodb://localhost:27017';
 MongoClient.connect(url, {poolSize:10,useNewUrlParser: true,useUnifiedTopology: true},function(err, client) {
