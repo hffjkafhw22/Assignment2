@@ -77,6 +77,33 @@ In the chat page, users could send image via the filebutton and transferred as t
 
 ## A description of how you divided the responsibilities between client and server (you are encouraged to have the server provide a REST API which returns JSON in addition to a static directory)
 
+For the REST API, the add part has the parameter to receive the data from the client and serve.  The const .collection to confirm the “duplicate id” and insert the input data into the collection “project”.
+
+
+product = req.body;
+        const collection = db.collection('products');
+
+
+
+For the edit part, when the updateOne receives the data from the column and then update to the related part.
+product = req.body;
+        //console.log(req);
+        var objectid = new ObjectID(product.objid);
+        const collection = db.collection('products');
+        collection.updateOne({_id:objectid},{$set:{name:product.name,groupunits:product.groupunits,description:product.description,channel: product.channel}},()=>{
+          //Return a response to the client to let them know the delete was successful
+           res.send({'ok':product.objid});
+
+
+For the delete part, the server part could delete the objected from the product ID and its document. 
+
+  productID = req.body.productid;
+        //create a new mongo Object ID from the passed in _id
+        var objectid = new ObjectID(productID);
+        const collection = db.collection('products');
+        //Delete a single item based on its unique ID.
+        collection.deleteOne({_id:objectid},(err,docs)=>{
+
 
 
 
