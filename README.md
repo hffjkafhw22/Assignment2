@@ -106,15 +106,64 @@ For the delete part, the server part could delete the objected from the product 
 
 
 
+JSON transfers the  getitem from the object to the character and then transfer these document.
+app.use (bodyParser.json()); //Mounts the specified middleware function
+
+this.currentUser = JSON.parse(sessionStorage.getItem('currentUser'));  
+    if(this.currentUser){
+      this.email = this.currentUser.email;
+      this.username = this.currentUser.username;
+      this.birthdate = this.currentUser.birthdate;
+      this.age = this.currentUser.age;
+
+
+
+
 
 ##  A list of routes, parameters, return values, and purpose
 
-
-
+The routes has the api-add.js to process the add service when superadministrator, api-deleteitem.js is to delete the document; api-getitem is to create new users. Api-update.js is to edit the original part and then update it.
 
 ## Angular architecture: components, services, models, routes
+Angular has the server.js to run the server services and server.js is to receive the data from the client and process. The server.js sets up the port to the localhost and then insert the console component. In the socket part to receive the message and name to post to the website page.
+
+server.listen(process.env.PORT || 3000); // set up the port
+
+console.log('server running on port 3000.');
+
+app.get('/', function(req, res){
+    res.sendFile(__dirname + '/index1.html');//post the chat page via the link
+});
+
+io.sockets.on('connection', function(socket){
+    connections.push(socket); 
+    console.log('User Connected: %s online', connections.length);     //display the connection leagth, how many users          
+
+    socket.on('disconnect', function(data){
+        if(socket.username){
+            users.splice(users.indexOf(socket.username), 1);
+            updateUsers();
+        }
+        connections.splice(connections.indexOf(socket), 1);
+        console.log('User disconneted: %s online', connections.length);//display the disconnection leagth, how many users disconnection
+    });
+
+    socket.on('send message', function(data){
+        io.sockets.emit('new message', {msg:data, user: socket.username});
+    });
+
+    socket.on('new user', function(data, callback){
+        if(users.indexOf(data) != -1){
+            callback(false);
+        }else {
+            callback(true);
+            socket.username = data;
+            users.push(socket.username);
+            updateUsers();
+        }
+        
+    });
 
 
 
 
-## Describe the details of the interaction between client and server by indicating how the files and global vars in server side will be changed and how the display of each angular component page will be updated. 
